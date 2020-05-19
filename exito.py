@@ -109,9 +109,3 @@ def getdescuento(x):
         return None
 
 datos_exito['descuento'] = datos_exito['info extra'].apply(lambda x: getdescuento(x))
-
-
-
-
-
-
