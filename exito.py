@@ -115,4 +115,3 @@ datos_exito['descuento'] = datos_exito['info extra'].apply(lambda x: getdescuent
 
 
 
-
