@@ -68,6 +68,8 @@ for items in containers:
     except:
         units.append(np.nan)
 
+browser.quit()
+
 dict_ = {'products': products, 'descriptions':descriptions, 'prices':prices, 'units':units}
 data_farmatodo = pd.DataFrame(dict_)
 
@@ -78,3 +80,25 @@ def getvalue(x):
         return None
 
 data_farmatodo['price_new'] = data_farmatodo['prices'].apply(lambda x: getvalue(x))
+
+def is_tampon(x):
+    if ('tampon' in x.lower()) | ('tampones' in x.lower()) | ('tampón' in x.lower()) :
+        return 1
+    else:
+        return 0
+
+def is_toalla(x):
+    if ('toalla' in x.lower()) | ('toallas' in x.lower()):
+        return 1
+    else:
+        return 0
+
+def is_protector(x):
+    if ('protector' in x.lower()) | ('protectores' in x.lower()):
+        return 1
+    else:
+        return 0
+
+data_farmatodo['tampon'] = data_farmatodo.products.apply(lambda x: is_tampon(x))
+data_farmatodo['toalla'] = data_farmatodo.products.apply(lambda x: is_toalla(x))
+data_farmatodo['protector'] = data_farmatodo.products.apply(lambda x: is_protector(x))
