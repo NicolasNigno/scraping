@@ -1,0 +1,4 @@
+selenium==3.141.0
+pandas==1.0.3
+price_parser==0.3.3
+numpy==1.18.1
