@@ -17,8 +17,6 @@ prices_exito = []
 prices_new = []
 units = []
 
-## Página 1 ##
-
 def get_items(containers):
     for item in containers:
         try:
@@ -51,30 +49,22 @@ def get_items(containers):
         except:
             units.append(np.nan)
 
-url = 'https://www.exito.com/salud-y-belleza/higiene-intima'
-browser = webdriver.Chrome(executable_path=r'C:\Users\nicol\Downloads\chromedriver.exe')
-browser.get(url)
+op = webdriver.ChromeOptions()
+op.add_argument('headless')
 
-time.sleep(10)
-
-containers = browser.find_elements_by_xpath("//article[@class='vtex-product-summary-2-x-element pointer pt3 pb4 flex flex-column h-100']")
-
-get_items(containers)
-
-browser.quit()
-
-## Resto de páginas ##
+## chrome webdriver executable path es burnt ##
+browser = webdriver.Chrome(executable_path=r'C:\Users\nicol\Downloads\chromedriver.exe',
+                           options=op) #options=op
 
 finished = False
-n=2
+n=1
 
 while finished == False:
     try:
         url = 'https://www.exito.com/salud-y-belleza/higiene-intima?page=%s' %n
-        browser = webdriver.Chrome(executable_path=r'C:\Users\nicol\Downloads\chromedriver.exe')
         browser.get(url)
+        time.sleep(10)
         
-        time.sleep(20)
         if browser.find_elements_by_xpath("//article[@class='vtex-product-summary-2-x-element pointer pt3 pb4 flex flex-column h-100']") == []:
             finished = True
         
@@ -82,10 +72,8 @@ while finished == False:
         get_items(containers)
         
         n+=1
+        time.sleep(5)
         
-        time.sleep(2)
-        
-        browser.quit()
     except:
         pass
 
