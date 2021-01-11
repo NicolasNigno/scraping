@@ -47,15 +47,20 @@ for medicamento in medicamentos:
                 time.sleep(3)
     
                 try:
-                    elem = browser.find_element_by_xpath("//ion-button[@class='ion-color ion-color-secondary md button button-block button-outline ion-activatable ion-focusable hydrated']")
+                    elem = browser.find_element_by_xpath("/html/body/app-root/ion-app/ion-split-pane/ion-router-outlet/ion-tabs/div/ion-router-outlet/app-results/ion-content/div/ion-item/ion-label/ion-text")
                     elem.click()
                     time.sleep(3)
     
                     active_ele = browser.switch_to.active_element
                     active_ele.send_keys(comuna) 
-    
                     time.sleep(3)
-                    browser.find_element_by_xpath("//ion-item[@class='pointer item md in-list ion-focusable item-label hydrated']").click()
+                    
+                    elem = browser.find_element_by_xpath("/html/body/app-root/ion-app/ion-modal/div/app-geo-config/ion-content/ion-list/ion-item[2]/ion-label")
+                    elem.click()
+                    time.sleep(3)
+                    
+                    #time.sleep(3)
+                    #browser.find_element_by_xpath("/html/body/app-root/ion-app/ion-modal/div/app-geo-config/ion-header/ion-toolbar/ion-buttons/ion-button//button/span").click()
                 except:
                     pass
     
