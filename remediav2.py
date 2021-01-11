@@ -25,8 +25,8 @@ locales = []
 medicamento_df = []
 
 url = 'https://www.remedia.cl/precios'
-browser.get(url)
-time.sleep(5)
+#browser.get(url)
+#time.sleep(5)
 
 for medicamento in medicamentos:
     try:
