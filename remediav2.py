@@ -53,6 +53,7 @@ for medicamento in medicamentos:
     
                     active_ele = browser.switch_to.active_element
                     active_ele.send_keys(comuna) 
+                    time.sleep(3)
                     
                     elem = browser.find_element_by_xpath("/html/body/app-root/ion-app/ion-modal/div/app-geo-config/ion-content/ion-list/ion-item[2]/ion-label")
                     elem.click()
